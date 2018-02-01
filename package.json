@@ -1,0 +1,14 @@
+{
+  "name": "writinglogsvg",
+  "version": "1.0.0",
+  "description": "generate svg file for writing log",
+  "main": "writingLogSVG.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.16.0"
+  }
+}
