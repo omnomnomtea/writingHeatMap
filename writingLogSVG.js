@@ -22,7 +22,9 @@ const mapDataToWordsPerDay = (data) => {
 };
 
 const generateSVG = (data) => {
+  // clean the data and put in reverse chronological order
   const cleanerData = mapDataToWordsPerDay(data);
+  const sortedData = cleanerData.sort((a, b) => b.date - a.date);
 
 };
 
