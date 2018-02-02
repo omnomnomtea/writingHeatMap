@@ -1,5 +1,6 @@
 const writingLog = require('./writinglog.json');
 
+// some nice purple shades
 const colors = [
   '#FFFFFF',
   '#E9DCED',
@@ -39,19 +40,18 @@ const generateSVG = (rawData) => {
   const maxCount = Math.max(...data.map(d => d.count));
 
 
-  const generateRect = (dayData, offsetX, offsetY) => {
+  const generateRect = (dayData, offsetX) => {
     let colorIndex = 0; // color defaults to white or index 0
     if (dayData.count) colorIndex =
       Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 1)) + 1;
     const color = colors[colorIndex];
-    return `<rect class="day" width="${boxSize}" height="${boxSize}" x="${offsetX}" y="${offsetY}" fill="${color}" data-count="${dayData.count}" data-date="${dayData.date.toDateString()}"></rect>`;
+    return `<rect class="day" width="${boxSize}" height="${boxSize}" x="${offsetX}" y="0" fill="${color}" data-count="${dayData.count}" data-date="${dayData.date.toDateString()}"></rect>`;
   };
 
   let dataIndex = 0;
   const dataToMap = [];
   const startSunday = olderDate - (olderDate.getDay() * msPerDay);
   const endsSaturday = new Date(recentDate + ((6 - recentDate.getDay()) * msPerDay));
-  // console.log('startSunday', startSunday);
   for (
     let currentDay = new Date(startSunday);
     currentDay < endsSaturday;
@@ -71,7 +71,7 @@ const generateSVG = (rawData) => {
   const weeks = [];
   dataToMap.forEach((datum) => {
     const dayOfWeek = new Date(datum.date).getDay();
-    const rect = generateRect(datum, 12 * weeks.length, 12 * dayOfWeek);
+    const rect = generateRect(datum, 12 * dayOfWeek);
     // if it's 0, it's sunday and we start a new week
     if (!dayOfWeek) {
       weeks.push([rect]);
@@ -81,7 +81,14 @@ const generateSVG = (rawData) => {
   });
 
 
-  return weeks.map(week => week.join('\n')).join('\n\n');
+  const svgString = weeks.map((week, i) => {
+    return `<g transform="translate(0,${i * 12})">\n${week.join('\n')}</g>`;
+  })
+    .join('\n\n');
+
+
+
+  return `<svg width="${7 * 12}" height="${12 * weeks.length}"><rect width="${7 * 12}" height="${12 * weeks.length} fill="#000000"></rect>\n${svgString}\n</svg>`;
 };
 
 
