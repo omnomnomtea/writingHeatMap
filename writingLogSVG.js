@@ -42,8 +42,10 @@ const generateSVG = (rawData) => {
 
   const generateRect = (dayData, offsetX) => {
     let colorIndex = 0; // color defaults to white or index 0
-    if (dayData.count) colorIndex =
-      Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 1)) + 1;
+    if (dayData.count) {
+      colorIndex =
+        Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 1)) + 1;
+    }
     const color = colors[colorIndex];
     return `<rect class="day" width="${boxSize}" height="${boxSize}" x="${offsetX}" y="0" fill="${color}" data-count="${dayData.count}" data-date="${dayData.date.toDateString()}"></rect>`;
   };
@@ -85,8 +87,6 @@ const generateSVG = (rawData) => {
     return `<g transform="translate(0,${i * 12})">\n${week.join('\n')}</g>`;
   })
     .join('\n\n');
-
-
 
   return `<svg width="${7 * 12}" height="${12 * weeks.length}"><rect width="${7 * 12}" height="${12 * weeks.length} fill="#000000"></rect>\n${svgString}\n</svg>`;
 };
