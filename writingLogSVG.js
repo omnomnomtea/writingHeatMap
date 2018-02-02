@@ -1,15 +1,15 @@
 // some nice blue shades
 const colors = [
   '#FFFFFF',
-  '#96E4EA',
+  '#B5F0F4',
   '#63E3ED',
   '#39B1BA',
-  '#09393D',
-  '#001011',
+  '#0D5056',
+  '#042F33',
 ];
 // size of each box in px
 const boxSize = 20;
-
+let maxCount;
 // constant we use a lot
 const msPerDay = 1000 * 60 * 60 * 24;
 
@@ -39,14 +39,14 @@ const generateSVG = (rawData) => {
   const today = new Date(new Date().setHours(0, 0, 1));
   const olderDate = data[data.length - 1].date;
 
-  const maxCount = Math.floor(Math.max(...data.map(d => d.count)));
+  maxCount = Math.floor(Math.max(...data.map(d => d.count)));
 
   const generateRect = (dayData) => {
     const offsetX = dayData.date.getDay() * (boxSize + 2);
     let colorIndex = 0; // color defaults to white (index 0)
     if (dayData.count) {
       colorIndex =
-        Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 2)) + 1;
+        Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 1)) + 1;
     }
     const endOfLastWeek = new Date(today.valueOf() + (6 - today.getDay()) * msPerDay);
     const daysAgo = Math.floor((endOfLastWeek.valueOf() - dayData.date.valueOf()) / msPerDay);
@@ -82,13 +82,27 @@ const generateSVG = (rawData) => {
   const daysSVG = dataToMap.map(day => generateRect(day));
   const svgString = daysSVG.join('\n');
 
-  return `<svg width="${11 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}">
+  return `<svg width="${12 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}">
   <rect width="${12 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}" fill="#000000"></rect>
-  <g transform="translate(0,${(boxSize + 2)})">
+  <g transform="translate(2,${(boxSize + 2)})">
   ${svgString}
   <text class="label-week" x="${(boxSize + 2.5) * 7}" y="${(boxSize - 6)}" fill="#FFFFFF">This week</text>
   <text class="label-week" x="${(boxSize + 2.5) * 7}" y="${(boxSize * 2 - 4)}" fill="#FFFFFF">Last week</text>
   <text class="label-week" x="${(boxSize + 2.5) * 7}" y="${(boxSize * 3 - 2)}" fill="#FFFFFF">etc...</text>
+
+  <rect class="key" width="${boxSize}" height="${boxSize}" x="${(boxSize + 2.5) * 7}" y="${(boxSize+2) * 5 + 10}" fill="${colors[0]}"></rect>
+  <text class="key-label" x="${(boxSize + 2.5) * 8}" y="${(boxSize+ 5) * 5 + 10}" fill="#ffffff">Less</text>
+
+  <rect class="key" width="${boxSize}" height="${boxSize}" x="${(boxSize + 2.5) * 7}" y="${(boxSize+2) * 6 + 10}" fill="${colors[1]}"></rect>
+
+  <rect class="key" width="${boxSize}" height="${boxSize}" x="${(boxSize + 2.5) * 7}" y="${(boxSize+2) * 7 + 10}" fill="${colors[2]}"></rect>
+
+  <rect class="key" width="${boxSize}" height="${boxSize}" x="${(boxSize + 2.5) * 7}" y="${(boxSize+2) * 8 + 10}" fill="${colors[3]}"></rect>
+
+  <rect class="key" width="${boxSize}" height="${boxSize}" x="${(boxSize + 2.5) * 7}" y="${(boxSize+2) * 9 + 10}" fill="${colors[4]}"></rect>
+
+  <rect class="key" width="${boxSize}" height="${boxSize}" x="${(boxSize + 2.5) * 7}" y="${(boxSize+2) * 10 + 10}" fill="${colors[5]}"></rect>
+  <text class="key-label" x="${(boxSize + 2.5) * 8}" y="${(boxSize+ 28) * 5 + 10}" fill="#ffffff">More</text>
 
   </g>
   </svg>`;
