@@ -10,13 +10,15 @@ const colors = [
 // size of each box in px
 const boxSize = 20;
 
+const msPerDay = 1000 * 60 * 60 * 24;
 
 const mapDataToWordsPerDay = (data) => {
-  const wpd = [];
-  data.forEach((entry) => {
-    if (
-      wpd.length && Date(entry.date) - wpd[wpd.length - 1].date === 0) {
-      wpd[wpd.length - 1].count += entry.count;
+  const wpd = [data[0]];
+  data.forEach((entry, i) => {
+    if (i === 0) return;
+    const timeSinceLastWPD = entry.date.valueOf() - wpd[wpd.length - 1].date.valueOf();
+    if (wpd.length && Math.abs(timeSinceLastWPD) <= msPerDay / 2) {
+      wpd[wpd.length - 1] = { count: entry.count, date: entry.date };
     } else {
       wpd.push({ count: entry.count, date: new Date(entry.date) });
     }
@@ -26,15 +28,17 @@ const mapDataToWordsPerDay = (data) => {
 
 const generateSVG = (rawData) => {
   // clean the data and put in reverse chronological order
-  rawData.sort((a, b) => a.date - b.date);
-
+  const lessRawData = rawData.map(d => ({ ...d, date: new Date(d.date) }));
+  console.log('lessRawData', lessRawData);
+  lessRawData.sort((a, b) => b.date.valueOf() - a.date.valueOf());
   // combine entries to max of one per day
-  const data = mapDataToWordsPerDay(rawData);
+  const data = mapDataToWordsPerDay(lessRawData);
+
+  console.log('sorted and tidied data', data);
 
   const recentDate = new Date(); // data[data.length - 1].date;
   const olderDate = data[0].date;
 
-  const msPerDay = 1000 * 60 * 60 * 24;
   const maxCount = Math.max(...data.map(d => d.count));
 
 
@@ -90,9 +94,9 @@ const generateSVG = (rawData) => {
   <rect width="${10 * (boxSize + 2)}" height="${(boxSize + 2) * (weeks.length + 1)}" fill="#000000"></rect>
   <g transform="translate(0,${(boxSize + 2)})">
   ${svgString}
-  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize-6)}" fill="#FFFFFF">This week</text>
-  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize*2-4)}" fill="#FFFFFF">Last week</text>
-  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize*3-2)}" fill="#FFFFFF">etc...</text>
+  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize - 6)}" fill="#FFFFFF">This week</text>
+  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize * 2 - 4)}" fill="#FFFFFF">Last week</text>
+  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize * 3 - 2)}" fill="#FFFFFF">etc...</text>
 
   </g>
   </svg>`;
@@ -101,7 +105,7 @@ const generateSVG = (rawData) => {
 
 const svg = generateSVG(writingLog);
 
-const insertLoc = document.getElementById('insert-location')
+const insertLoc = document.getElementById('insert-location');
 insertLoc.innerHTML = svg;
 
 let days = document.getElementsByClassName('day');
