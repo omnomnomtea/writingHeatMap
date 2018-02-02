@@ -1,11 +1,11 @@
 // some nice purple shades
 const colors = [
   '#FFFFFF',
-  '#E9DCED',
-  '#D0C4D3',
-  '#B7ADBA',
-  '#9E95A0',
-  '#847D87',
+  '#96E4EA',
+  '#63E3ED',
+  '#39B1BA',
+  '#09393D',
+  '#001011',
 ];
 // size of each box in px
 const boxSize = 20;
@@ -29,27 +29,28 @@ const groupByDay = (data) => {
 
 const generateSVG = (rawData) => {
   // clean the data and put in reverse chronological order
-  const lessRawData = rawData.map(d => ({ ...d, date: new Date(new Date(d.date).setHours(0,0,1))}));
+  const lessRawData = rawData.map(d => ({ ...d, date: new Date(new Date(d.date).setHours(0, 0, 1)) }));
   lessRawData.sort((a, b) => b.date.valueOf() - a.date.valueOf());
   // combine entries to max of one per day
   const data = groupByDay(lessRawData);
 
   console.log('sorted and tidied data', data);
 
-  const today = new Date(new Date().setHours(0,0,1));
+  const today = new Date(new Date().setHours(0, 0, 1));
   const olderDate = data[data.length - 1].date;
 
-  const maxCount = Math.max(...data.map(d => d.count));
+  const maxCount = Math.floor(Math.max(...data.map(d => d.count)));
 
   const generateRect = (dayData) => {
     const offsetX = dayData.date.getDay() * (boxSize + 2);
-    let colorIndex = 0; // color defaults to white or index 0
+    let colorIndex = 0; // color defaults to white (index 0)
     if (dayData.count) {
       colorIndex =
-        Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 1)) + 1;
+        Math.floor((dayData.count) / (maxCount + 1) * (colors.length - 2)) + 1;
     }
-    const endOfWeek = new Date((6 - dayData.date.getDay()) * msPerDay + today.valueOf());
-    const weeksAgo = Math.ceil((endOfWeek.valueOf() - dayData.date.valueOf()) / 7 / msPerDay) - 1;
+    const endOfLastWeek = new Date(today.valueOf() + (6 - today.getDay()) * msPerDay);
+    const daysAgo = Math.floor((endOfLastWeek.valueOf() - dayData.date.valueOf()) / msPerDay);
+    const weeksAgo = Math.floor((daysAgo) / 7);
     const color = colors[colorIndex];
     const offsetY = weeksAgo * (boxSize + 2);
     return `<rect class="day" width="${boxSize}" height="${boxSize}" x="${offsetX}" y="${offsetY}" fill="${color}" data-count="${dayData.count}" data-date="${dayData.date.toDateString()}"></rect>`;
@@ -77,17 +78,17 @@ const generateSVG = (rawData) => {
   console.log('days', dataToMap);
 
   const endOfWeek = new Date((6 - today.getDay()) * msPerDay + today.valueOf());
-  const totalWeeksAgo = Math.ceil((endOfWeek.valueOf() - olderDate.valueOf()) / 7 / msPerDay) -1;
+  const totalWeeksAgo = Math.ceil((endOfWeek.valueOf() - olderDate.valueOf()) / 7 / msPerDay) - 1;
   const daysSVG = dataToMap.map(day => generateRect(day));
   const svgString = daysSVG.join('\n');
 
-  return `<svg width="${10 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}">
-  <rect width="${10 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}" fill="#000000"></rect>
+  return `<svg width="${11 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}">
+  <rect width="${12 * (boxSize + 2)}" height="${(boxSize + 2) * (totalWeeksAgo + 2)}" fill="#000000"></rect>
   <g transform="translate(0,${(boxSize + 2)})">
   ${svgString}
-  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize - 6)}" fill="#FFFFFF">This week</text>
-  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize * 2 - 4)}" fill="#FFFFFF">Last week</text>
-  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize * 3 - 2)}" fill="#FFFFFF">etc...</text>
+  <text class="label-week" x="${(boxSize + 2.5) * 7}" y="${(boxSize - 6)}" fill="#FFFFFF">This week</text>
+  <text class="label-week" x="${(boxSize + 2.5) * 7}" y="${(boxSize * 2 - 4)}" fill="#FFFFFF">Last week</text>
+  <text class="label-week" x="${(boxSize + 2.5) * 7}" y="${(boxSize * 3 - 2)}" fill="#FFFFFF">etc...</text>
 
   </g>
   </svg>`;
