@@ -1,4 +1,4 @@
-// some nice purple shades
+// some nice blue shades
 const colors = [
   '#FFFFFF',
   '#96E4EA',
