@@ -1,5 +1,3 @@
-const writingLog = require('./writinglog.json');
-
 // some nice purple shades
 const colors = [
   '#FFFFFF',
@@ -10,7 +8,7 @@ const colors = [
   '#847D87',
 ];
 // size of each box in px
-const boxSize = 10;
+const boxSize = 20;
 
 
 const mapDataToWordsPerDay = (data) => {
@@ -28,12 +26,12 @@ const mapDataToWordsPerDay = (data) => {
 
 const generateSVG = (rawData) => {
   // clean the data and put in reverse chronological order
-  rawData.sort((a, b) => b.date - a.date);
+  rawData.sort((a, b) => a.date - b.date);
 
   // combine entries to max of one per day
   const data = mapDataToWordsPerDay(rawData);
 
-  const recentDate = data[data.length - 1].date;
+  const recentDate = new Date(); // data[data.length - 1].date;
   const olderDate = data[0].date;
 
   const msPerDay = 1000 * 60 * 60 * 24;
@@ -56,7 +54,7 @@ const generateSVG = (rawData) => {
   const endsSaturday = new Date(recentDate + ((6 - recentDate.getDay()) * msPerDay));
   for (
     let currentDay = new Date(startSunday);
-    currentDay < endsSaturday;
+    currentDay <= endsSaturday;
     currentDay = new Date(currentDay.valueOf() + msPerDay)
   ) {
     // if we're within a day of the data's timestamp, use data's wordcount
@@ -73,7 +71,7 @@ const generateSVG = (rawData) => {
   const weeks = [];
   dataToMap.forEach((datum) => {
     const dayOfWeek = new Date(datum.date).getDay();
-    const rect = generateRect(datum, 12 * dayOfWeek);
+    const rect = generateRect(datum, (boxSize + 2) * dayOfWeek);
     // if it's 0, it's sunday and we start a new week
     if (!dayOfWeek) {
       weeks.push([rect]);
@@ -84,12 +82,36 @@ const generateSVG = (rawData) => {
 
 
   const svgString = weeks.map((week, i) => {
-    return `<g transform="translate(0,${i * 12})">\n${week.join('\n')}</g>`;
+    return `<g transform="translate(0,${i * (boxSize + 2)})">\n${week.join('\n')}</g>`;
   })
     .join('\n\n');
 
-  return `<svg width="${7 * 12}" height="${12 * weeks.length}"><rect width="${7 * 12}" height="${12 * weeks.length} fill="#000000"></rect>\n${svgString}\n</svg>`;
+  return `<svg width="${10 * (boxSize + 2)}" height="${(boxSize + 2) * (weeks.length + 1)}">
+  <rect width="${10 * (boxSize + 2)}" height="${(boxSize + 2) * (weeks.length + 1)}" fill="#000000"></rect>
+  <g transform="translate(0,${(boxSize + 2)})">
+  ${svgString}
+  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize-6)}" fill="#FFFFFF">This week</text>
+  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize*2-4)}" fill="#FFFFFF">Last week</text>
+  <text class="label-week" x="${(boxSize + 2) * 7}" y="${(boxSize*3-2)}" fill="#FFFFFF">etc...</text>
+
+  </g>
+  </svg>`;
 };
 
 
-console.log(generateSVG(writingLog));
+const svg = generateSVG(writingLog);
+
+const insertLoc = document.getElementById('insert-location')
+insertLoc.innerHTML = svg;
+
+let days = document.getElementsByClassName('day');
+days = Array.prototype.slice.call(days);
+
+
+days.forEach((day) => {
+  const textNode = document.createElement('text');
+  textNode.innerHTML = `${day.dataset.count} words on ${day.dataset.date}`;
+  textNode.classList.add('tooltip');
+  textNode.classList.add('tooltiptext');
+  day.parentNode.insertBefore(textNode, day);
+});

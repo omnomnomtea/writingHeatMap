@@ -1,4 +1,4 @@
-[
+const writingLog = [
   {
     "date": "2018-01-03",
     "count": 42,
@@ -34,4 +34,4 @@
     "count": 750,
     "project": "Davekat AU"
   }
-]
+];
