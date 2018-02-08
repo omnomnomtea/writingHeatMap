@@ -24,27 +24,26 @@ const colorOptions = {
 const colors = colorOptions.purple;
 
 
-const width = 960;
-const height = 136;
-const cellSize = 20;
+const cellSize = 15;
+const width = cellSize * 60;
+const height = cellSize * 10;
 
 // create color scale
 const color = d3.scaleQuantize()
-  .domain([0, 2000]) // range from 0 to 2000
+  .domain([0, 3000]) // range from 0 to 3000 words per day
   .range(colors);
 
 const currentYear = new Date().getFullYear();
 
 // create boxes for the days?
-const svg = d3.select('body')
-  .selectAll('svg')
-  .data(d3.range([currentYear, currentYear - 3]))
-  .enter()
-  .append('svg')
-  .attr('width', width)
-  .attr('height', height)
-  .append('g')
-  .attr('transform', 'translate(' + ((width - cellSize * 53) / 2) + ',' + (height - cellSize * 7 - 1) + ')');
+var svg = d3.select("body")
+  .selectAll("svg")
+  .data(d3.range(2016, 2019))
+  .enter().append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .append("g")
+  .attr("transform", "translate(" + ((width - cellSize * 50) / 1.9) + "," + (height - cellSize * 7 - 1) + ")");
 
 // allows us to append text nodes easily
 svg.append('text')
@@ -54,26 +53,25 @@ svg.append('text')
   .attr('text-anchor', 'middle')
   .text(d => d);
 
-const rect = svg.append('g')
-  .attr('fill', 'none')
-  .attr('stroke', '#ccc')
-  .selectAll('rect')
-  .data(d => d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)))
-  .enter()
-  .append('rect')
-  .attr('width', cellSize)
-  .attr('height', cellSize)
-  .attr('x', d => Number(d3.timeWeek.Count(d3.timeYear(d), d)) * cellSize)
-  .attr('y', d => d.getDay() * cellSize)
-  .datum(d3.timeFormat('%Y-%m-%d'));
+const rect = svg.append("g")
+  .attr("fill", "none")
+  .attr("stroke", "#ccc")
+  .selectAll("rect")
+  .data(function (d) { return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+  .enter().append("rect")
+  .attr("width", cellSize)
+  .attr("height", cellSize)
+  .attr("x", function (d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
+  .attr("y", function (d) { return d.getDay() * cellSize; })
+  .datum(d3.timeFormat("%Y-%m-%d"));
 
 
 function pathMonth(t0) {
   const t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0);
   const d0 = t0.getDay();
-  const w0 = Number(d3.timeWeek.Count(d3.timeYear(t0)), t0);
+  const w0 = d3.timeWeek.count(d3.timeYear(t0), t0);
   const d1 = t1.getDay();
-  const w1 = Number(d3.timeWeek.Count(d3.timeYear(t1)), t1);
+  const w1 = d3.timeWeek.count(d3.timeYear(t1), t1);
 
   return 'M' + (w0 + 1) * cellSize + ',' + d0 * cellSize
     + 'H' + w0 * cellSize + 'V' + 7 * cellSize
@@ -122,9 +120,9 @@ d3.csv('https://raw.githubusercontent.com/omnomnomtea/writingHeatMap/d3/log.csv'
 
   console.log(data);
 
-  rect.filter(d => d in data)
-    .attr('fill', d => color(data[d]))
-    .append('title')
-    .text(d => d + ': ' + (data[d]));
 
+  rect.filter(function (d) { return d in data; })
+    .attr("fill", function (d) { return color(data[d]); })
+    .append("title")
+    .text(function (d) { return d + ": " + data[d] });
 });
