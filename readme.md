@@ -4,7 +4,7 @@ Inspired by the way github shows your commit history on your profile. I wanted s
 
 Generates an SVG heatmap graph based on log.csv
 
-This may not be useful to anyone but me! If you do have a use for it, feel free to play with it! However, I threw this together in a couple hours and the code is... messy.
+This may not be useful to anyone but me! If you do have a use for it, feel free to play with it!
 
 ## Screenshot
 
