@@ -1,95 +1,194 @@
-﻿"Date","Count","Project"
-"2018-01-03","42","Davekat AU"
-"2018-01-05","250","Davekat AU"
-"2018-01-08","125","Davekat AU"
-"2018-01-09","1000","Davekat AU"
-"2018-01-17","303","Davekat AU"
-"2018-01-21","100","Davekat AU"
-"2018-01-21","750","Davekat AU"
-"2017-01-09","1039","Family Demons #2"
-"2017-01-15","1306","Enchanter AU"
-"2017-02-02","662","Xion HESST thing"
-"2017-02-15","628","Kairi AU"
-"2017-02-21","901","Family Demons #2"
-"2017-02-21","774","Family Demons #2"
-"2017-02-24","1186","Kairi AU"
-"2017-03-01","1808","Troll Human thing"
-"2017-03-02","487","Troll Human thing"
-"2017-03-10","500","Troll Human thing"
-"2017-03-11","657","Enchanter AU"
-"2017-03-16","1008","Kairi AU"
-"2017-03-18","184","Troll Human thing"
-"2017-03-19","2278","Troll Human thing"
-"2017-03-22","520","Troll Human thing"
-"2017-03-23","689","Troll Human thing"
-"2017-03-24","1125","Troll Human thing"
-"2017-03-25","369","Troll Human thing"
-"2017-03-28","211","(repeat repeat repeat)"
-"2017-03-28","2039","Tyzula Snippet"
-"2017-03-29","456","(repeat repeat repeat)"
-"2017-03-30","1475","(repeat repeat repeat)"
-"2017-04-04","169","Sol"
-"2017-05-02","1875","Kairi AU"
-"2017-05-03","644","Kairi AU"
-"2017-05-08","150","Kairi AU"
-"2017-05-17","529","Kairi AU"
-"2017-05-18","529","Horrible AU"
-"2017-06-03","1251","Kairi AU"
-"2017-06-04","510","Kairi AU"
-"2017-06-10","1506","Kairi AU"
-"2017-06-11","544","Kairi AU"
-"2017-06-12","852","Kairi AU"
-"2017-06-16","1590","HogwartsStuck"
-"2017-06-17","210","HogwartsStuck"
-"2017-06-19","2051","HogwartsStuck"
-"2017-06-20","775","HogwartsStuck"
-"2017-06-21","307","HogwartsStuck"
-"2017-06-22","630","HogwartsStuck"
-"2017-07-03","20","Soft Ace Romance"
-"2017-07-03","1674","Kairi AU"
-"2017-07-04","1022","Kairi AU"
-"2017-07-08","825","HogwartsStuck"
-"2017-07-09","801","HogwartsStuck"
-"2017-07-10","1000","HogwartsStuck"
-"2017-07-11","90","HogwartsStuck"
-"2017-07-12","759","HogwartsStuck"
-"2017-07-17","1434","Kairi AU"
-"2017-07-18","56","HogwartsStuck"
-"2017-07-19","1144","DaveKat Royalty AU"
-"2017-07-20","873","DaveKat Royalty AU"
-"2017-07-21","76","DaveKat Royalty AU"
-"2017-07-22","1555","DaveKat Royalty AU"
-"2017-07-26","707","DaveKat Royalty AU"
-"2017-07-27","150","DaveKat Royalty AU"
-"2017-07-28","107","DaveKat Royalty AU"
-"2017-08-01","5","DaveKat Royalty AU"
-"2017-08-07","1193","DaveKat Royalty AU"
-"2017-08-09","298","DaveKat Royalty AU"
-"2017-08-10","360","DaveKat Royalty AU"
-"2017-08-11","299","DaveKat Royalty AU"
-"2017-08-12","50","Kairi AU"
-"2017-08-12","228","DaveKat Royalty AU"
-"2017-08-13","380","DaveKat Royalty AU"
-"2017-08-16","400","DaveKat Royalty AU"
-"2017-08-17","400","DaveKat Royalty AU"
-"2017-08-19","657","DaveKat Royalty AU"
-"2017-08-26","9","DaveKat Royalty AU"
-"2017-09-01","1","DaveKat Royalty AU"
-"2017-09-02","1525","DaveKat Royalty AU"
-"2017-10-04","414","Kairi AU"
-"2017-10-05","1332","Kairi AU"
-"2017-10-06","1146","Kairi AU"
-"2017-10-07","78","Kairi AU"
-"2017-10-08","1186","Meta"
-"2017-10-09","354","Kairi AU"
-"2017-10-29","21","Davekat Royalty AU"
-"2017-11-11","1440","Kairi AU"
-"2017-11-11","1440","FTH"
-"2017-11-18","1673","FTH"
-"2017-11-25","3","FTH"
-"2017-11-26","875","Xion HESST thing"
-"2017-11-30","33","Kairi AU"
-"2017-12-01","696","Kairi AU"
-"2017-12-03","43","DaveKat Royalty AU"
-"2017-12-03","1190","Kairi AU"
-"2017-12-27","36","Kairi AU"
+Date,Count,Project
+2018-01-03,42,Davekat AU
+2018-01-05,250,Davekat AU
+2018-01-08,125,Davekat AU
+2018-01-09,1000,Davekat AU
+2018-01-17,303,Davekat AU
+2018-01-21,100,Davekat AU
+2018-01-21,750,Davekat AU
+2017-01-09,1039,Family Demons #2
+2017-01-15,1306,Enchanter AU
+2017-02-02,662,Xion HESST thing
+2017-02-15,628,Kairi AU
+2017-02-21,901,Family Demons #2
+2017-02-21,774,Family Demons #2
+2017-02-24,1186,Kairi AU
+2017-03-01,1808,Troll Human thing
+2017-03-02,487,Troll Human thing
+2017-03-10,500,Troll Human thing
+2017-03-11,657,Enchanter AU
+2017-03-16,1008,Kairi AU
+2017-03-18,184,Troll Human thing
+2017-03-19,2278,Troll Human thing
+2017-03-22,520,Troll Human thing
+2017-03-23,689,Troll Human thing
+2017-03-24,1125,Troll Human thing
+2017-03-25,369,Troll Human thing
+2017-03-28,211,(repeat repeat repeat)
+2017-03-28,2039,Tyzula Snippet
+2017-03-29,456,(repeat repeat repeat)
+2017-03-30,1475,(repeat repeat repeat)
+2017-04-04,169,Sol
+2017-05-02,1875,Kairi AU
+2017-05-03,644,Kairi AU
+2017-05-08,150,Kairi AU
+2017-05-17,529,Kairi AU
+2017-05-18,529,Horrible AU
+2017-06-03,1251,Kairi AU
+2017-06-04,510,Kairi AU
+2017-06-10,1506,Kairi AU
+2017-06-11,544,Kairi AU
+2017-06-12,852,Kairi AU
+2017-06-16,1590,HogwartsStuck
+2017-06-17,210,HogwartsStuck
+2017-06-19,2051,HogwartsStuck
+2017-06-20,775,HogwartsStuck
+2017-06-21,307,HogwartsStuck
+2017-06-22,630,HogwartsStuck
+2017-07-03,20,Soft Ace Romance
+2017-07-03,1674,Kairi AU
+2017-07-04,1022,Kairi AU
+2017-07-08,825,HogwartsStuck
+2017-07-09,801,HogwartsStuck
+2017-07-10,1000,HogwartsStuck
+2017-07-11,90,HogwartsStuck
+2017-07-12,759,HogwartsStuck
+2017-07-17,1434,Kairi AU
+2017-07-18,56,HogwartsStuck
+2017-07-19,1144,DaveKat Royalty AU
+2017-07-20,873,DaveKat Royalty AU
+2017-07-21,76,DaveKat Royalty AU
+2017-07-22,1555,DaveKat Royalty AU
+2017-07-26,707,DaveKat Royalty AU
+2017-07-27,150,DaveKat Royalty AU
+2017-07-28,107,DaveKat Royalty AU
+2017-08-01,5,DaveKat Royalty AU
+2017-08-07,1193,DaveKat Royalty AU
+2017-08-09,298,DaveKat Royalty AU
+2017-08-10,360,DaveKat Royalty AU
+2017-08-11,299,DaveKat Royalty AU
+2017-08-12,50,Kairi AU
+2017-08-12,228,DaveKat Royalty AU
+2017-08-13,380,DaveKat Royalty AU
+2017-08-16,400,DaveKat Royalty AU
+2017-08-17,400,DaveKat Royalty AU
+2017-08-19,657,DaveKat Royalty AU
+2017-08-26,9,DaveKat Royalty AU
+2017-09-01,1,DaveKat Royalty AU
+2017-09-02,1525,DaveKat Royalty AU
+2017-10-04,414,Kairi AU
+2017-10-05,1332,Kairi AU
+2017-10-06,1146,Kairi AU
+2017-10-07,78,Kairi AU
+2017-10-08,1186,Meta
+2017-10-09,354,Kairi AU
+2017-10-29,21,Davekat Royalty AU
+2017-11-11,1440,Kairi AU
+2017-11-11,1440,FTH
+2017-11-18,1673,FTH
+2017-11-25,3,FTH
+2017-11-26,875,Xion HESST thing
+2017-11-30,33,Kairi AU
+2017-12-01,696,Kairi AU
+2017-12-03,43,DaveKat Royalty AU
+2017-12-03,1190,Kairi AU
+2017-12-27,36,Kairi AU
+2016-01-03,12,Dead Baby Fic
+2016-01-04,1200,Modern AU Verse Azula-centric
+2016-01-05,560,Dead Baby Fic
+2016-01-08,330,Castle People
+2016-01-10,100,I meant to save you (but you saved me instead)
+2016-01-18,200,Modern AU Verse Azula-centric
+2016-01-20,100,Modern AU Verse Azula-centric
+2016-01-21,430,Modern AU Verse Azula-centric
+2016-01-22,23,Castle People
+2016-01-23,227,Castle People
+2016-01-30,2337,Madoka/Avatar fusion
+2016-01-31,435,Madoka/Avatar fusion
+2016-02-06,40,Madoka/Avatar fusion
+2016-02-06,319,Dementor Meta
+2016-02-06,700,Memoir Thing
+2016-02-24,1166,Troll Star Wars Review
+2016-02-27,15,Troll Star Wars Review
+2016-03-03,254,From The Breath
+2016-03-04,194,WYWIUD
+2016-03-07,2726,WYWIUD
+2016-03-09,3200,WYWIUD
+2016-03-10,856,WYWIUD
+2016-03-12,408,WYWIUD
+2016-03-15,896,WYWIUD
+2016-03-18,1197,WYWIUD
+2016-03-23,206,WYWIUD
+2016-03-10,33,Kairi Fic
+2016-04-03,208,Kairi Fic
+2016-04-04,785,Kairi Fic
+2016-04-11,26,Kairi Fic
+2016-04-16,51,Kairi Fic
+2016-04-27,1386,Troll Human thing
+2016-04-28,511,Troll Human thing
+2016-05-06,528,Troll Human thing
+2016-05-13,915,Troll Human thing
+2016-05-17,182,Troll Human thing
+2016-05-18,556,Kairi Fic
+2016-05-19,1776,Kairi Fic
+2016-05-27,726,Kairi Fic
+2016-06-17,1305,This Universe Runs On Happy Faces
+2016-06-18,2440,This Universe Runs On Happy Faces
+2016-06-26,316,This Universe Runs On Happy Faces
+2016-06-27,2192,Troll Human Thing
+2016-06-30,1400,Troll Human Thing
+2016-07-02,618,Troll Human Thing
+2016-07-05,1002,Troll Human Thing
+2016-07-06,348,Troll Human Thing
+2016-07-06,300,Modern AU
+2016-07-07,277,Modern AU
+2016-07-25,1240,HESST3
+2016-07-26,4,HESST3
+2016-07-30,812,Modern AU
+2016-08-02,2,HESST3
+2016-08-10,1980,Sol
+2016-08-11,574,Sol
+2016-08-18,1500,HESST4
+2016-08-21,500,Sol
+2016-08-28,844,Sol
+2016-08-29,22,Sol
+2016-08-30,88,Sol
+2016-08-31,502,Sol
+2016-08-10,1980,Sol
+2016-09-01,1459,Sol
+2016-09-02,42,Sol
+2016-09-03,702,Sol
+2016-09-11,10,Sol
+2016-09-13,508,Kairi AU
+2016-09-14,120,Kairi AU
+2016-09-14,1132,Family Thing
+2016-09-20,202,Kairi AU
+2016-10-02,206,Family Demons
+2016-10-03,251,Family Demons
+2016-10-08,683,Family Demons
+2016-10-10,377,Family Demons
+2016-10-11,457,Hogwartsstuck
+2016-10-12,1123,Hogwartsstuck
+2016-10-17,693,Family Demons
+2016-10-18,491,Family Demons
+2016-10-21,483,Family Demons
+2016-10-25,59,Kairi AU
+2016-10-26,924,Family Demons
+2016-10-30,1,Family Demons
+2016-10-31,488,Family Demons
+2016-11-01,535,Castle People
+2016-11-08,1119,Family Demons
+2016-11-10,593,Family Demons
+2016-11-11,1106,Family Demons
+2016-11-12,3374,Family Demons
+2016-11-13,4,Family Demons
+2016-11-21,63,Family Demons
+2016-11-28,603,Family Demons
+2016-12-02,200,Family Demons 2
+2016-12-04,198,Family Demons
+2016-12-08,417,Family Demons 2
+2016-12-14,531,Ace Romance Thing
+2016-12-15,100,Metamorph AU
+2016-12-16,70,Madoka/Avatar fusion
+2016-12-17,560,Troll Human Thing
+2016-12-18,1172,Troll Human Thing
