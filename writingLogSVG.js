@@ -11,12 +11,21 @@ const colorOptions = {
     '#042F33',
   ],
   purple: [
-    '#fafafa',
-    '#d8d8d8',
-    '#bfafbc',
-    '#aea0af',
-    '#a081a5',
-    '#8f6099',
+    '#FFFFFF',
+    '#F7F1F1',
+    '#F0E3E5',
+    '#E9D6DB',
+    '#E1C9D1',
+    '#DABDC9',
+    '#D3B1C2',
+    '#CCA6BC',
+    '#C49AB6',
+    '#BD90B2',
+    '#B685AE',
+    '#AE7BAA',
+    '#A772A7',
+    '#9B68A0',
+    '#8E6099',
   ],
 };
 
@@ -30,7 +39,7 @@ const height = cellSize * 10;
 
 // create color scale
 const color = d3.scaleQuantize()
-  .domain([0, 3000]) // range from 0 to 3000 words per day
+  .domain([0, 2000]) // range from 0 to 3000 words per day
   .range(colors);
 
 const currentYear = new Date().getFullYear();
@@ -102,15 +111,15 @@ d3.csv('https://raw.githubusercontent.com/omnomnomtea/writingHeatMap/master/log.
     .sort((a, b) => a.key.valueOf() - b.key.valueOf())
     .reduce((acc, entry) => {
       const timeSinceLast = acc.length ? acc[acc.length - 1].Date - entry.Date : Infinity;
-      if (timeSinceLast < msPerDay / 2) {
+      if (Math.abs(timeSinceLast < msPerDay) / 2) {
         acc[acc.length - 1].Count += Number(entry.Count);
       } else {
-        acc.push(entry);
+        acc.push({ ...entry, Count: Number(entry.Count) });
       }
       return acc;
     }, [])
     .map((d) => {
-      d.value = Number(d.value)
+      d.value = Number(d.value);
       return d;
     })
     .reduce((acc, obj) => {
