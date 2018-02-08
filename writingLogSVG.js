@@ -90,7 +90,7 @@ svg.append('g')
   .attr('d', pathMonth);
 
 
-d3.csv('https://raw.githubusercontent.com/omnomnomtea/writingHeatMap/d3/log.csv', (error, csv) => {
+d3.csv('https://raw.githubusercontent.com/omnomnomtea/writingHeatMap/master/log.csv', (error, csv) => {
   if (error) throw error;
   const format = d3.timeFormat('%Y-%m-%d');
 
