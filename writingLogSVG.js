@@ -39,7 +39,7 @@ const height = cellSize * 10;
 
 // create color scale
 const color = d3.scaleQuantize()
-  .domain([0, 2000]) // range from 0 to 3000 words per day
+  .domain([0, 1700]) // range from 0 to 3000 words per day
   .range(colors);
 
 const currentYear = new Date().getFullYear();
